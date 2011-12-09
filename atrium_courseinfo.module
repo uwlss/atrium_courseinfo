@@ -1,0 +1,39 @@
+<?php
+
+include_once('atrium_courseinfo.features.inc');
+
+/**
+ * Implementation of hook_help().
+ */
+function atrium_courseinfo_help($path) {
+  // Central help page content.
+  if ($path == 'help#atrium_courseinfo') {
+    $help = '<h3>'. t('Course Info') .'</h3>';
+    $help .= '<p>'. t("The Course Information page is the intructors blog. Course information posts let instructors share course related content, information, and challenges.") .'</p>';
+    $help .= '<p>'. t("To create a course information post navigate to the Course Info page and click the \"Add Course Info\" button. You will need to enter a title and some body content to your post. Then click \"Save\".") .'</p>';
+    return $help;
+  }
+
+  // Contextual help content.
+  if (context_isset('context', 'courseinfo_listing')) {
+    if ($path == 'node/add/courseinfo') {
+      $help = '';
+      $help .= '<h3>'. t('Course Info') .'</h3>';
+      $help .= '<p>'. t("Post course information for this group. The post will be shared will all group members on the Course Information page, and they will be able to reply to it. You can optionally notify other group members by checking their name in the notifications field.") .'</p>';
+      return $help;
+    }
+    else {
+      $help = '<h3>'. t('Course Info') .'</h3>';
+      $help .= '<p>'. t("Course Information lets you share course related content, information, and challenges.") .'</p>';
+      return $help;
+    }
+  }
+}
+
+
+/**
+* Implementation of hook_init().
+*/
+function atrium_courseinfo_init() {
+  drupal_add_css(drupal_get_path('module', 'atrium_courseinfo') .'/atrium_courseinfo.css');
+}
