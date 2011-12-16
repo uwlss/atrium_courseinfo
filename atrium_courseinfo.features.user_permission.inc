@@ -11,7 +11,7 @@ function atrium_courseinfo_user_default_permissions() {
     'name' => 'create courseinfo content',
     'roles' => array(
       '0' => 'administrator',
-      '1' => 'authenticated user',
+      '1' => 'instructor',
       '2' => 'manager',
     ),
   );
